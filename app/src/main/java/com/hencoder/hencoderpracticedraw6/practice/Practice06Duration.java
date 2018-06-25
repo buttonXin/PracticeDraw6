@@ -1,5 +1,7 @@
 package com.hencoder.hencoderpracticedraw6.practice;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hencoder.hencoderpracticedraw6.R;
 
@@ -31,6 +34,8 @@ public class Practice06Duration extends LinearLayout {
     public Practice06Duration(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
+    boolean temp = true;
 
     @Override
     protected void onAttachedToWindow() {
@@ -65,6 +70,37 @@ public class Practice06Duration extends LinearLayout {
             @Override
             public void onClick(View v) {
                 // TODO 在这里处理点击事件，执行动画。记得使用 `setDuration(duration)` 来设置动画的时长。
+
+                if (temp) {
+                    imageView.animate().setDuration(duration);
+                    imageView.animate().scaleX(20)
+                            .scaleY(20)
+                            .setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    super.onAnimationEnd(animation);
+                                    Toast.makeText(getContext(), "结束进行跳转Activity或者fragment", Toast.LENGTH_SHORT).show();
+                                    imageView.animate()
+                                            .scaleX(0.6f)
+                                            .scaleY(0.6f)
+                                            .setDuration(100).setListener(new AnimatorListenerAdapter() {
+                                        @Override
+                                        public void onAnimationEnd(Animator animation) {
+                                            super.onAnimationEnd(animation);
+                                            imageView.animate().cancel();
+                                        }
+                                    });
+                                }
+                            });
+                    temp = !temp;
+                } else {
+                    imageView.animate().setDuration(duration);
+                    imageView.animate().scaleX(1);
+                    imageView.animate().scaleY(1);
+                    temp = !temp;
+                }
+
+
             }
         });
     }

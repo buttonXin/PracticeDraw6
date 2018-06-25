@@ -13,6 +13,7 @@ import com.hencoder.hencoderpracticedraw6.R;
 public class Practice03Scale extends RelativeLayout {
     Button animateBt;
     ImageView imageView;
+    private int count;
 
     public Practice03Scale(Context context) {
         super(context);
@@ -37,6 +38,34 @@ public class Practice03Scale extends RelativeLayout {
             @Override
             public void onClick(final View v) {
                 // TODO 在这里处理点击事件，通过 View.animate().scaleX/Y() 来让 View 放缩
+
+                if (count == 0) {
+
+                    imageView.animate().scaleX(1.4f);
+                }
+                if (count == 1) {
+                    imageView.animate().scaleX(1);
+
+                }
+                if (count == 2) {
+
+                    imageView.animate().scaleY(0.5f);
+                    imageView.animate().scaleX(0.5f);
+                }
+                if (count == 3) {
+                    imageView.animate().scaleY(1);
+                    imageView.animate().scaleX(1);
+
+
+                }
+
+
+                count ++ ;
+
+
+                if (count >= 4) {
+                    count = 0;
+                }
             }
         });
     }

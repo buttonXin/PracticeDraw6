@@ -1,3 +1,44 @@
+
+- 属性动画
+```
+ imageView.animate()
+          .translationX(Utils.dpToPixel(150))
+          .setDuration(600)
+          ...
+
+          这个就是属性动画，
+          进行延伸，可以做全屏扩散 ， 如下
+
+点击扩散，然后跳转， 最后缩放到原来的位置。
+private void scale(final View view) {
+        view.animate()
+                .scaleX(10)
+                .scaleY(10)
+                .setDuration(500)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+
+                        startActivity(new Intent(getApplicationContext(), ScaleActivity2.class));
+
+                        view.animate()
+                                .scaleY(1)
+                                .scaleX(1)
+                                .setDuration(500)
+                                .setListener(new AnimatorListenerAdapter() {
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+
+                                        view.animate().cancel();
+                                    }
+                                });
+
+                    }
+                });
+    }
+
+```
+
 ![](images/icon.png)
 
 HenCoder 绘制 6 属性动画 练习项目

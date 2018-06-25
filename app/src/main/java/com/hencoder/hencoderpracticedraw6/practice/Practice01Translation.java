@@ -22,6 +22,8 @@ public class Practice01Translation extends RelativeLayout {
     Button animateBt;
     ImageView imageView;
 
+    private int count = 0;
+
     public Practice01Translation(Context context) {
         super(context);
     }
@@ -49,6 +51,30 @@ public class Practice01Translation extends RelativeLayout {
             @Override
             public void onClick(final View v) {
                 // TODO 在这里处理点击事件，通过 View.animate().translationX/Y/Z() 来让 View 平移
+
+                if (count == 0) {
+
+                    imageView.animate().translationX(100);
+                }
+                if (count == 1) {
+                    imageView.animate().translationX(0);
+
+                }
+                if (count == 2) {
+
+                    imageView.animate().translationY(50);
+                }
+                if (count == 3) {
+                    imageView.animate().translationY(0);
+
+                }
+
+                count ++ ;
+
+
+                if (count >= 4) {
+                    count = 0;
+                }
             }
         });
     }
