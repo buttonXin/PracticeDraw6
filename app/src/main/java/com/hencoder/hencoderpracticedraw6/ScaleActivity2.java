@@ -1,8 +1,10 @@
 package com.hencoder.hencoderpracticedraw6;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -18,5 +20,14 @@ public class ScaleActivity2 extends AppCompatActivity {
         view.setText("333333");
         view.setTextSize(33);
         setContentView(view);
+
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext() , MainActivity.class));
+                finish();
+            }
+        });
     }
 }
