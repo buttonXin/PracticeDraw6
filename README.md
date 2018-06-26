@@ -37,6 +37,8 @@ private void scale(final View view) {
                 });
     }
 
+然后将view 的shape设置成圆形的  这样点击就会有扩散全屏跳转的效果！！！
+
 ```
 
 ![](images/icon.png)

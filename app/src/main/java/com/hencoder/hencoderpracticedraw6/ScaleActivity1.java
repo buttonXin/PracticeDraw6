@@ -25,7 +25,7 @@ public class ScaleActivity1 extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_scale1);
-        Button view = (Button) findViewById(R.id.btn_scale);
+        final Button view = (Button) findViewById(R.id.btn_scale);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
